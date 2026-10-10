@@ -1,0 +1,8 @@
+{
+  "name": "Remix MedConnect Pro",
+  "description": "Enterprise telemedicine platform featuring secure RBAC, doctor provisioning, and a high-speed clinical prescription generation engine for healthcare professionals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

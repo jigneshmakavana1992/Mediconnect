@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Solid Pure White Clean Background Tile with Soft Rounded Corners -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,4 L88,4 A8,8 0 0,1 96,12 L96,88 A8,8 0 0,1 88,96 L12,96 A8,8 0 0,1 4,88 L4,12 A8,8 0 0,1 12,4 Z" />
+
+    <!-- Subtle bottom decorative framing swooshes (Cyan & Red) -->
+    <path
+        android:fillColor="#00A3FF"
+        android:pathData="M4,90 Q25,93 45,96 L4,96 Z" />
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M96,90 Q75,93 55,96 L96,96 Z" />
+
+    <!-- Stethoscope tubing wrapping beneath the figures and shield -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round"
+        android:pathData="M31,38 C22,42 22,51 34,55 C40,57 60,57 66,55 C70,54 73,51 74,48" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F1F5F9"
+        android:strokeWidth="1.0"
+        android:strokeLineCap="round"
+        android:pathData="M31,38 C22,42 22,51 34,55 C40,57 60,57 66,55 C70,54 73,51 74,48" />
+
+    <!-- Stethoscope chestpiece / diaphragm on the right -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#64748B"
+        android:strokeWidth="0.9"
+        android:pathData="M74,45 A3.5,3.5 0 1,1 74,52 A3.5,3.5 0 1,1 74,45 Z" />
+    <path
+        android:fillColor="#00A3FF"
+        android:pathData="M74,47 A1.5,1.5 0 1,1 74,50 A1.5,1.5 0 1,1 74,47 Z" />
+
+    <!-- Wi-Fi / Teleconsultation Signal Arcs above red figure -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF1744"
+        android:strokeWidth="1.1"
+        android:strokeLineCap="round"
+        android:pathData="M69,18 A7,7 0 0,1 75,24" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF1744"
+        android:strokeWidth="1.1"
+        android:strokeLineCap="round"
+        android:pathData="M71,15 A10,10 0 0,1 78,24" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FF1744"
+        android:strokeWidth="1.1"
+        android:strokeLineCap="round"
+        android:pathData="M73,12 A13,13 0 0,1 81,24" />
+
+    <!-- Left Blue Figure (Patient / User) -->
+    <!-- Head -->
+    <path
+        android:fillColor="#00A3FF"
+        android:pathData="M38,15 A4.5,4.5 0 1,1 38,24 A4.5,4.5 0 1,1 38,15 Z" />
+    <!-- Body/Arm -->
+    <path
+        android:fillColor="#00A3FF"
+        android:pathData="M38,25 C32,25 29,30 29,38 L29,46 C33,48 37,46 40,42 L43,37 C46,34 49,32 50,31.5 C48,28.5 43,25 38,25 Z" />
+
+    <!-- Right Red Figure (Doctor / Specialist) -->
+    <!-- Head -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M62,15 A4.5,4.5 0 1,1 62,24 A4.5,4.5 0 1,1 62,15 Z" />
+    <!-- Body/Arm -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M62,25 C68,25 71,30 71,38 L71,46 C67,48 63,46 60,42 L57,37 C54,34 51,32 50,31.5 C52,28.5 57,25 62,25 Z" />
+
+    <!-- Center Medical Shield (White with slate border) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="0.9"
+        android:pathData="M41,32 L59,32 C59,32 60,43 54,49 L50,53 L46,49 C40,43 41,32 41,32 Z" />
+
+    <!-- Red Medical Cross inside Shield -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M45,40.5 L55,40.5 C55.5,40.5 56,41 56,41.5 L56,43.5 C56,44 55.5,44.5 55,44.5 L45,44.5 C44.5,44.5 44,44 44,43.5 L44,41.5 C44,41 44.5,40.5 45,40.5 Z" />
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M48.5,37 L51.5,37 C52,37 52.5,37.5 52.5,38 L52.5,47 C52.5,47.5 52,48 51.5,48 L48.5,48 C48,48 47.5,47.5 47.5,47 L47.5,38 C47.5,37.5 48,37 48.5,37 Z" />
+
+    <!-- Brand Typography: "Medi" in deep navy, "Connect" in red -->
+    <!-- "M" -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M14,64 L16.8,64 L19,69.5 L21.2,64 L24,64 L24,73 L21.8,73 L21.8,67.2 L19.8,72 L18.2,72 L16.2,67.2 L16.2,73 L14,73 Z" />
+    <!-- "e" -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M29.5,69.5 L26,69.5 C26.2,71 27.2,71.7 28.5,71.7 C29.3,71.7 30,71.4 30.5,70.9 L31.5,72 C30.6,73 29.5,73.4 28.2,73.4 C25.8,73.4 24.2,71.8 24.2,69.5 C24.2,67.2 25.8,65.6 28.1,65.6 C30.4,65.6 31.7,67.2 31.7,69.5 L29.5,69.5 Z M26,68.2 L29.5,68.2 C29.3,67.2 28.6,66.8 27.8,66.8 C27,66.8 26.2,67.2 26,68.2 Z" />
+    <!-- "d" -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M35.5,64 L37.5,64 L37.5,73 L35.6,73 L35.6,72.2 C35,73 34,73.4 33,73.4 C31,73.4 29.5,71.8 29.5,69.5 C29.5,67.2 31,65.6 33,65.6 C34,65.6 35,66 35.5,66.8 Z M33.5,67.2 C32.4,67.2 31.5,68.1 31.5,69.5 C31.5,70.9 32.4,71.8 33.5,71.8 C34.6,71.8 35.5,70.9 35.5,69.5 C35.5,68.1 34.6,67.2 33.5,67.2 Z" />
+    <!-- "i" -->
+    <path
+        android:fillColor="#0B2545"
+        android:pathData="M39.5,64 A1.2,1.2 0 1,1 39.5,64.2 Z M38.5,66 L40.5,66 L40.5,73 L38.5,73 Z" />
+
+    <!-- "C" (Red) -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M47,65.5 L47,67.5 C46.2,66.8 45.2,66.4 44.2,66.4 C42.2,66.4 40.8,67.8 40.8,69.5 C40.8,71.2 42.2,72.6 44.2,72.6 C45.2,72.6 46.2,72.2 47,71.5 L47,73.5 C46,74.2 44.8,74.5 43.5,74.5 C40.2,74.5 38.5,72.3 38.5,69.5 C38.5,66.7 40.2,64.5 43.5,64.5 C44.8,64.5 46,64.8 47,65.5 Z" />
+
+    <!-- "o" with video camera inside -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M51.5,65.6 C53.8,65.6 55.5,67.3 55.5,69.5 C55.5,71.7 53.8,73.4 51.5,73.4 C49.2,73.4 47.5,71.7 47.5,69.5 C47.5,67.3 49.2,65.6 51.5,65.6 Z" />
+    <!-- Camera icon inside 'o' -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M49.8,68.2 L52.2,68.2 C52.5,68.2 52.8,68.5 52.8,68.8 L52.8,70.2 C52.8,70.5 52.5,70.8 52.2,70.8 L49.8,70.8 C49.5,70.8 49.2,70.5 49.2,70.2 L49.2,68.8 C49.2,68.5 49.5,68.2 49.8,68.2 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M52.8,69.1 L54,68.4 L54,70.6 L52.8,69.9 Z" />
+
+    <!-- "nnect" -->
+    <!-- "n" -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M57,66 L59,66 L59,67 C59.6,66.2 60.5,65.8 61.5,65.8 C63,65.8 64,66.8 64,68.4 L64,73 L62,73 L62,68.8 C62,67.8 61.4,67.4 60.6,67.4 C59.8,67.4 59,68 59,69 L59,73 L57,73 Z" />
+    <!-- "n" -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M65.5,66 L67.5,66 L67.5,67 C68.1,66.2 69,65.8 70,65.8 C71.5,65.8 72.5,66.8 72.5,68.4 L72.5,73 L70.5,73 L70.5,68.8 C70.5,67.8 69.9,67.4 69.1,67.4 C68.3,67.4 67.5,68 67.5,69 L67.5,73 L65.5,73 Z" />
+    <!-- "e" -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M78.5,69.5 L75,69.5 C75.2,71 76.2,71.7 77.5,71.7 C78.3,71.7 79,71.4 79.5,70.9 L80.5,72 C79.6,73 78.5,73.4 77.2,73.4 C74.8,73.4 73.2,71.8 73.2,69.5 C73.2,67.2 74.8,65.6 77.1,65.6 C79.4,65.6 80.7,67.2 80.7,69.5 L78.5,69.5 Z M75,68.2 L78.5,68.2 C78.3,67.2 77.6,66.8 76.8,66.8 C76,66.8 75.2,67.2 75,68.2 Z" />
+    <!-- "c" -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M84.5,67 L84.5,68.5 C83.8,67.8 83,67.2 82.2,67.2 C81,67.2 80,68.2 80,69.5 C80,70.8 81,71.8 82.2,71.8 C83,71.8 83.8,71.2 84.5,70.5 L84.5,72 C83.8,72.8 82.8,73.2 81.8,73.2 C79.8,73.2 78.2,71.6 78.2,69.5 C78.2,67.4 79.8,65.8 81.8,65.8 C82.8,65.8 83.8,66.2 84.5,67 Z" />
+    <!-- "t" -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M85.5,64 L87.5,64 L87.5,66 L89,66 L89,67.5 L87.5,67.5 L87.5,71.5 C87.5,72 87.8,72.2 88.3,72.2 C88.6,72.2 88.9,72.1 89.1,72 L89.1,73.4 C88.6,73.6 88,73.7 87.4,73.7 C86,73.7 85.5,72.9 85.5,71.5 L85.5,67.5 L84.5,67.5 L84.5,66 L85.5,66 Z" />
+
+    <!-- Tagline: "AI Powered Teleconsultation Platform" Flank Lines -->
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M11,79 L20,79 C20.3,79 20.5,79.2 20.5,79.5 C20.5,79.8 20.3,80 20,80 L11,80 C10.7,80 10.5,79.8 10.5,79.5 C10.5,79.2 10.7,79 11,79 Z" />
+    <path
+        android:fillColor="#FF1744"
+        android:pathData="M80,79 L89,79 C89.3,79 89.5,79.2 89.5,79.5 C89.5,79.8 89.3,80 89,80 L80,80 C79.7,80 79.5,79.8 79.5,79.5 C79.5,79.2 79.7,79 80,79 Z" />
+
+    <!-- Tagline text bar across center -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M23,79.2 L77,79.2 C77.2,79.2 77.4,79.4 77.4,79.6 C77.4,79.8 77.2,80 77,80 L23,80 C22.8,80 22.6,79.8 22.6,79.6 C22.6,79.4 22.8,79.2 23,79.2 Z" />
+</vector>

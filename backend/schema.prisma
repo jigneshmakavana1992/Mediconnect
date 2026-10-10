@@ -1,0 +1,190 @@
+// Prisma Schema for MedConnect Pro
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  DOCTOR
+  PATIENT
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id                    String            @id @default(uuid()) @db.Uuid
+  email                 String            @unique
+  passwordHash          String            @map("password_hash")
+  fullName              String            @map("full_name")
+  phone                 String
+  role                  UserRole          @default(PATIENT)
+  requiresPasswordReset Boolean           @default(false) @map("requires_password_reset")
+  isActive              Boolean           @default(true) @map("is_active")
+  createdAt             DateTime          @default(now()) @map("created_at")
+  updatedAt             DateTime          @updatedAt @map("updated_at")
+
+  doctorProfile         DoctorProfile?
+  patientProfile        PatientProfile?
+  doctorAppointments    Appointment[]     @relation("DoctorAppointments")
+  patientAppointments   Appointment[]     @relation("PatientAppointments")
+  prescriptionsWritten  Prescription[]    @relation("DoctorPrescriptions")
+  prescriptionsReceived Prescription[]    @relation("PatientPrescriptions")
+  familyMembers         FamilyMember[]
+
+  @@map("users")
+}
+
+model DoctorProfile {
+  id                        String   @id @default(uuid()) @db.Uuid
+  doctorId                  String   @unique @map("doctor_id") @db.Uuid
+  councilRegistrationNumber String   @unique @map("council_registration_number")
+  qualifications            String
+  speciality                String
+  clinicAffiliation         String   @map("clinic_affiliation")
+  contactDetails            String   @map("contact_details")
+  consultationFee           Decimal  @default(50.00) @map("consultation_fee") @db.Decimal(10, 2)
+  consultationTimings       String   @default("Mon-Fri 09:00 - 17:00") @map("consultation_timings")
+  digitalSignatureHash      String   @map("digital_signature_hash")
+  isVerified                Boolean  @default(true) @map("is_verified")
+  createdAt                 DateTime @default(now()) @map("created_at")
+  updatedAt                 DateTime @updatedAt @map("updated_at")
+
+  user                      User     @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@map("doctor_profiles")
+}
+
+model PatientProfile {
+  id                String         @id @default(uuid()) @db.Uuid
+  patientId         String         @unique @map("patient_id") @db.Uuid
+  dateOfBirth       DateTime?      @map("date_of_birth") @db.Date
+  age               Int?
+  gender            String
+  bloodGroup        String?        @map("blood_group")
+  weightKg          Decimal?       @map("weight_kg") @db.Decimal(5, 2)
+  allergies         String?        @default("None known")
+  chronicConditions String?        @default("None") @map("chronic_conditions")
+  emergencyContact  String?        @map("emergency_contact")
+  createdAt         DateTime       @default(now()) @map("created_at")
+  updatedAt         DateTime       @updatedAt @map("updated_at")
+
+  user              User           @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  growthRecords     GrowthRecord[]
+
+  @@map("patient_profiles")
+}
+
+model FamilyMember {
+  id            String         @id @default(uuid()) @db.Uuid
+  patientId     String         @map("patient_id") @db.Uuid
+  name          String
+  relationship  String
+  dateOfBirth   DateTime?      @map("date_of_birth") @db.Date
+  ageInMonths   Int?           @map("age_in_months")
+  gender        String
+  allergies     String?        @default("None known")
+  createdAt     DateTime       @default(now()) @map("created_at")
+
+  patient       User           @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  growthRecords GrowthRecord[]
+
+  @@map("family_members")
+}
+
+model GrowthRecord {
+  id                   String          @id @default(uuid()) @db.Uuid
+  patientId            String          @map("patient_id") @db.Uuid
+  familyMemberId       String?         @map("family_member_id") @db.Uuid
+  recordedDate         DateTime        @default(now()) @map("recorded_date")
+  ageInMonths          Int             @map("age_in_months")
+  weightKg             Decimal         @map("weight_kg") @db.Decimal(5, 2)
+  heightCm             Decimal         @map("height_cm") @db.Decimal(5, 2)
+  headCircumferenceCm  Decimal?        @map("head_circumference_cm") @db.Decimal(5, 2)
+  whoWeightPercentile  Int             @map("who_weight_percentile")
+  whoHeightPercentile  Int             @map("who_height_percentile")
+  clinicalNotes        String?         @map("clinical_notes")
+
+  patientProfile       PatientProfile  @relation(fields: [patientId], references: [patientId], onDelete: Cascade)
+  familyMember         FamilyMember?   @relation(fields: [familyMemberId], references: [id], onDelete: Cascade)
+
+  @@map("growth_records")
+}
+
+model Appointment {
+  id               String            @id @default(uuid()) @db.Uuid
+  doctorId         String            @map("doctor_id") @db.Uuid
+  patientId        String            @map("patient_id") @db.Uuid
+  appointmentTime  DateTime          @map("appointment_time")
+  consultationType String            @default("Video Call") @map("consultation_type")
+  chiefComplaint   String            @map("chief_complaint")
+  status           AppointmentStatus @default(SCHEDULED)
+  meetingRoomId    String            @map("meeting_room_id")
+  createdAt        DateTime          @default(now()) @map("created_at")
+  updatedAt        DateTime          @updatedAt @map("updated_at")
+
+  doctor           User              @relation("DoctorAppointments", fields: [doctorId], references: [id])
+  patient          User              @relation("PatientAppointments", fields: [patientId], references: [id])
+  prescriptions    Prescription[]
+
+  @@map("appointments")
+}
+
+model Prescription {
+  id                         String       @id
+  appointmentId              String?      @map("appointment_id") @db.Uuid
+  doctorId                   String       @map("doctor_id") @db.Uuid
+  patientId                  String       @map("patient_id") @db.Uuid
+  doctorName                 String       @map("doctor_name")
+  doctorQualifications       String       @map("doctor_qualifications")
+  doctorSpeciality           String       @map("doctor_speciality")
+  councilRegistrationNumber  String       @map("council_registration_number")
+  clinicAffiliation          String       @map("clinic_affiliation")
+  patientName                String       @map("patient_name")
+  patientAge                 Int          @map("patient_age")
+  patientGender              String       @map("patient_gender")
+  patientWeightKg            Decimal?     @map("patient_weight_kg") @db.Decimal(5, 2)
+  patientAllergies           String?      @map("patient_allergies")
+  patientChronicConditions   String?      @map("patient_chronic_conditions")
+  diagnosisICD10             String       @map("diagnosis_icd10")
+  vitalsBp                   String?      @map("vitals_bp")
+  vitalsPulse                String?      @map("vitals_pulse")
+  vitalsSpO2                 String?      @map("vitals_spo2")
+  vitalsTemp                 String?      @map("vitals_temp")
+  medicationsJson            Json         @map("medications_json")
+  clinicalAdviceJson         String?      @map("clinical_advice_json")
+  labOrdersJson              String?      @map("lab_orders_json")
+  followUpText               String?      @map("follow_up_text")
+  followUpDate               DateTime?    @map("follow_up_date")
+  doctorSignatureHash        String       @map("doctor_signature_hash")
+  verificationQrUrl          String       @map("verification_qr_url")
+  createdAt                  DateTime     @default(now()) @map("created_at")
+
+  appointment                Appointment? @relation(fields: [appointmentId], references: [id])
+  doctor                     User         @relation("DoctorPrescriptions", fields: [doctorId], references: [id])
+  patient                    User         @relation("PatientPrescriptions", fields: [patientId], references: [id])
+
+  @@map("prescriptions")
+}
+
+model ClinicalAuditLog {
+  id               String   @id @default(uuid()) @db.Uuid
+  action           String
+  performedByEmail String   @map("performed_by_email")
+  userRole         String   @map("user_role")
+  targetResource   String   @map("target_resource")
+  details          String
+  ipAddress        String?  @map("ip_address")
+  timestamp        DateTime @default(now())
+
+  @@map("clinical_audit_logs")
+}
